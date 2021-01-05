@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+    <form action="{% url 'create_author' %}" method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+        <table>
+                {{ form}}
+
+        </table>
+
+    <input type="submit" value="insert">
+
+    </form>
+
+{% endblock %}

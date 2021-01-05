@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <form action="{% url 'create_book' %}" method="post">
+        {% csrf_token %}
+        Name:
+        <input type="text" name="title">
+        Publication Date:
+        <input type="text" name="publication_date">
+        Publisher:
+        <select name="publisher">
+           {% for publisher in publishers %}
+                <option value="{{ publisher.id }}">{{ publisher.name }}</option>
+           {% endfor %}
+        </select>
+
+        <select multiple name="author">
+           {% for author in authors %}
+                <option value="{{ author.id }}">{{ author.first_name }}</option>
+           {% endfor %}
+        </select>
+        <input type="submit" value="send">
+    </form>
+{% endblock %}
